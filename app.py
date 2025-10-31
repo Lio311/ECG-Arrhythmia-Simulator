@@ -5,7 +5,11 @@ import pandas as pd
 import numpy as np
 
 # --- Page Configuration ---
-st.set_page_config(layout="wide", page_title="ECG Arrhythmia Simulator")
+st.set_page_config(
+    layout="wide",
+    page_title="ECG Arrhythmia Simulator",
+    page_icon="🫀"
+)
 
 st.title("ECG Arrhythmia Simulator")
 st.markdown("Use the sidebar to select an arrhythmia and configure simulation parameters.")
