@@ -42,18 +42,19 @@ def plot_ecg(signal, sampling_rate, title):
     """
     Creates an interactive Plotly chart for the ECG signal.
     """
-    # Create a time index in seconds
-    time_index = pd.to_timedelta(np.arange(len(signal)) / sampling_rate, unit='s')
-    
-    # Create a Pandas Series for easy plotting
-    signal_series = pd.Series(signal, index=time_index, name="Amplitude")
+    # --- START OF FIX ---
+    # Create a simple NumPy array for the time axis (in seconds)
+    # This avoids the Plotly TimedeltaIndex formatting bug
+    time_axis_seconds = np.arange(len(signal)) / sampling_rate
+    # --- END OF FIX ---
 
     fig = go.Figure()
     fig.add_trace(go.Scatter(
-        x=signal_series.index, 
-        y=signal_series.values, 
+        x=time_axis_seconds,  # Use the new simple array
+        y=signal,             # Use the raw signal array
         mode='lines',
-        line=dict(color='green')
+        line=dict(color='green'),
+        name='ECG'
     ))
 
     fig.update_layout(
