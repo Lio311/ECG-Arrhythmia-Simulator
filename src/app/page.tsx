@@ -281,7 +281,17 @@ export default function ECGSimulator() {
               </Label>
               <Select value={formData.type} onValueChange={(val) => handleChange("type", val || "")}>
                 <SelectTrigger className="bg-background border-border text-foreground focus:ring-red-500 flex-row-reverse justify-between text-right">
-                  <SelectValue />
+                  <span className="truncate">
+                    {formData.type === 'normal' ? 'קצב רגיל (Normal Sinus)' :
+                     formData.type === 'afib' ? 'פרפור פרוזדורים (AFib)' :
+                     formData.type === 'aflutter' ? 'רפרוף פרוזדורים (AFL)' :
+                     formData.type === 'svt' ? 'SVT' :
+                     formData.type === 'vt' ? 'VT (Ventricular Tachycardia)' :
+                     formData.type === 'vfib' ? 'VF (Ventricular Fibrillation)' :
+                     formData.type === 'av1' ? 'חסימה AV דרגה 1' :
+                     formData.type === 'av2' ? 'חסימה AV דרגה 2' :
+                     formData.type === 'av3' ? 'חסימה AV דרגה 3' : 'בחר'}
+                  </span>
                 </SelectTrigger>
                 <SelectContent className="bg-background border-border text-foreground" dir="rtl">
                   <SelectItem value="normal">קצב רגיל (Normal Sinus)</SelectItem>
