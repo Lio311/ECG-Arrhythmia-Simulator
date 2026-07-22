@@ -265,25 +265,25 @@ export default function ECGSimulator() {
               סימולטור הפרעות קצב
             </h1>
           </div>
-          <p className="text-lg text-slate-300 font-light">סימולציה אינטראקטיבית של הפרעות קצב לב שונות</p>
+          <p className="text-lg text-slate-200 font-light">סימולציה אינטראקטיבית של הפרעות קצב לב שונות</p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Controls Panel */}
-          <aside className="lg:col-span-4 card-anim glass-card border-white/10 bg-black/20 p-6 rounded-2xl flex flex-col gap-6">
+          <aside className="lg:col-span-4 card-anim glass-card border-white/20 bg-slate-900/60 p-6 rounded-2xl flex flex-col gap-6">
             <h2 className="text-xl font-semibold flex items-center gap-2 mb-2 text-white">
               <SlidersHorizontal className="w-5 h-5 text-red-500" /> בקרות
             </h2>
 
             <div className="space-y-2 text-right">
-              <Label className="flex items-center gap-2 text-slate-300">
+              <Label className="flex items-center gap-2 text-slate-200">
                 <Stethoscope className="w-4 h-4 text-red-500" /> סוג הפרעת קצב
               </Label>
               <Select value={formData.type} onValueChange={(val) => handleChange("type", val || "")}>
-                <SelectTrigger className="bg-white/5 border-white/10 text-white focus:ring-red-500 flex-row-reverse justify-between text-right">
+                <SelectTrigger className="bg-slate-800/60 border-white/20 text-white focus:ring-red-500 flex-row-reverse justify-between text-right">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-white/10 text-white" dir="rtl">
+                <SelectContent className="bg-slate-800 border-white/20 text-white" dir="rtl">
                   <SelectItem value="normal">קצב רגיל (Normal Sinus)</SelectItem>
                   <SelectItem value="afib">פרפור פרוזדורים (AFib)</SelectItem>
                   <SelectItem value="aflutter">רפרוף פרוזדורים (AFL)</SelectItem>
@@ -298,7 +298,7 @@ export default function ECGSimulator() {
             </div>
 
             <div className="space-y-2 text-right">
-              <Label className="flex items-center gap-2 text-slate-300 mb-4">
+              <Label className="flex items-center gap-2 text-slate-200 mb-4">
                 <Heart className="w-4 h-4 text-red-500" /> קצב לב (BPM): {formData.heartRate}
               </Label>
               <Slider 
@@ -311,7 +311,7 @@ export default function ECGSimulator() {
             </div>
 
             <div className="space-y-2 text-right">
-              <Label className="flex items-center gap-2 text-slate-300 mb-4">
+              <Label className="flex items-center gap-2 text-slate-200 mb-4">
                 <Clock className="w-4 h-4 text-red-500" /> משך (שניות): {formData.duration}
               </Label>
               <Slider 
@@ -331,7 +331,7 @@ export default function ECGSimulator() {
               <span>הצג ECG</span>
             </Button>
 
-            <div className="mt-4 p-5 bg-white/5 rounded-xl border border-white/5">
+            <div className="mt-4 p-5 bg-slate-800/60 rounded-xl border border-white/5">
               <h3 className="text-md font-semibold text-white mb-2">מידע על ההפרעה</h3>
               <p className="text-sm text-slate-400 leading-relaxed">
                 {arrhythmiaDescriptions[formData.type] || "בחר סוג הפרעת קצב לקבלת מידע"}
@@ -341,7 +341,7 @@ export default function ECGSimulator() {
 
           {/* Preview Panel */}
           <main className="lg:col-span-8 card-anim flex flex-col gap-6">
-            <Card className="glass-card border-white/10 bg-black/20 flex-grow">
+            <Card className="glass-card border-white/20 bg-slate-900/60 flex-grow">
               <CardHeader>
                 <CardTitle className="text-xl flex items-center gap-2 text-white">
                   <Activity className="w-5 h-5 text-red-500" /> גרף ECG
@@ -360,10 +360,11 @@ export default function ECGSimulator() {
           </main>
         </div>
 
-        <footer className="text-center text-slate-500 text-sm mt-12 pb-8 border-t border-white/10 pt-8">
+        <footer className="text-center text-slate-500 text-sm mt-12 pb-8 border-t border-white/20 pt-8">
           <p>סימולטור ECG לצרכים חינוכיים בלבד</p>
         </footer>
       </div>
     </div>
   );
 }
+
