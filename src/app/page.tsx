@@ -252,7 +252,7 @@ export default function ECGSimulator() {
   };
 
   return (
-    <div className="relative min-h-screen text-slate-100" dir="rtl" ref={containerRef}>
+    <div className="relative min-h-screen text-foreground" dir="rtl" ref={containerRef}>
       <div className="bg-animation">
         {[1, 2, 3, 4, 5].map(i => <div key={i} className="bubble"></div>)}
       </div>
@@ -265,25 +265,25 @@ export default function ECGSimulator() {
               סימולטור הפרעות קצב
             </h1>
           </div>
-          <p className="text-lg text-slate-200 font-light">סימולציה אינטראקטיבית של הפרעות קצב לב שונות</p>
+          <p className="text-lg text-foreground font-light">סימולציה אינטראקטיבית של הפרעות קצב לב שונות</p>
         </header>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Controls Panel */}
-          <aside className="lg:col-span-4 card-anim glass-card border-white/20 bg-slate-900/60 p-6 rounded-2xl flex flex-col gap-6">
-            <h2 className="text-xl font-semibold flex items-center gap-2 mb-2 text-white">
+          <aside className="lg:col-span-4 card-anim shadow-lg border border-border bg-card p-6 rounded-2xl flex flex-col gap-6">
+            <h2 className="text-xl font-semibold flex items-center gap-2 mb-2 text-foreground">
               <SlidersHorizontal className="w-5 h-5 text-red-500" /> בקרות
             </h2>
 
             <div className="space-y-2 text-right">
-              <Label className="flex items-center gap-2 text-slate-200">
+              <Label className="flex items-center gap-2 text-foreground">
                 <Stethoscope className="w-4 h-4 text-red-500" /> סוג הפרעת קצב
               </Label>
               <Select value={formData.type} onValueChange={(val) => handleChange("type", val || "")}>
-                <SelectTrigger className="bg-slate-800/60 border-white/20 text-white focus:ring-red-500 flex-row-reverse justify-between text-right">
+                <SelectTrigger className="bg-background border-border text-foreground focus:ring-red-500 flex-row-reverse justify-between text-right">
                   <SelectValue />
                 </SelectTrigger>
-                <SelectContent className="bg-slate-800 border-white/20 text-white" dir="rtl">
+                <SelectContent className="bg-background border-border text-foreground" dir="rtl">
                   <SelectItem value="normal">קצב רגיל (Normal Sinus)</SelectItem>
                   <SelectItem value="afib">פרפור פרוזדורים (AFib)</SelectItem>
                   <SelectItem value="aflutter">רפרוף פרוזדורים (AFL)</SelectItem>
@@ -298,7 +298,7 @@ export default function ECGSimulator() {
             </div>
 
             <div className="space-y-2 text-right">
-              <Label className="flex items-center gap-2 text-slate-200 mb-4">
+              <Label className="flex items-center gap-2 text-foreground mb-4">
                 <Heart className="w-4 h-4 text-red-500" /> קצב לב (BPM): {formData.heartRate}
               </Label>
               <Slider 
@@ -311,7 +311,7 @@ export default function ECGSimulator() {
             </div>
 
             <div className="space-y-2 text-right">
-              <Label className="flex items-center gap-2 text-slate-200 mb-4">
+              <Label className="flex items-center gap-2 text-foreground mb-4">
                 <Clock className="w-4 h-4 text-red-500" /> משך (שניות): {formData.duration}
               </Label>
               <Slider 
@@ -325,15 +325,15 @@ export default function ECGSimulator() {
 
             <Button 
               onClick={generateECG}
-              className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-white font-semibold py-6 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.3)] hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] flex items-center justify-center gap-2 text-lg"
+              className="w-full bg-gradient-to-r from-red-500 to-orange-500 hover:from-red-600 hover:to-orange-600 text-foreground font-semibold py-6 rounded-xl transition-all duration-300 shadow-[0_0_15px_rgba(239,68,68,0.3)] hover:shadow-[0_0_25px_rgba(239,68,68,0.5)] flex items-center justify-center gap-2 text-lg"
             >
               <Play className="w-5 h-5 fill-current" />
               <span>הצג ECG</span>
             </Button>
 
-            <div className="mt-4 p-5 bg-slate-800/60 rounded-xl border border-white/5">
-              <h3 className="text-md font-semibold text-white mb-2">מידע על ההפרעה</h3>
-              <p className="text-sm text-slate-400 leading-relaxed">
+            <div className="mt-4 p-5 bg-background rounded-xl border border-border">
+              <h3 className="text-md font-semibold text-foreground mb-2">מידע על ההפרעה</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
                 {arrhythmiaDescriptions[formData.type] || "בחר סוג הפרעת קצב לקבלת מידע"}
               </p>
             </div>
@@ -341,17 +341,17 @@ export default function ECGSimulator() {
 
           {/* Preview Panel */}
           <main className="lg:col-span-8 card-anim flex flex-col gap-6">
-            <Card className="glass-card border-white/20 bg-slate-900/60 flex-grow">
+            <Card className="shadow-lg border border-border bg-card flex-grow">
               <CardHeader>
-                <CardTitle className="text-xl flex items-center gap-2 text-white">
+                <CardTitle className="text-xl flex items-center gap-2 text-foreground">
                   <Activity className="w-5 h-5 text-red-500" /> גרף ECG
                 </CardTitle>
               </CardHeader>
-              <CardContent className="h-[500px] w-full bg-black/40 rounded-xl p-4 border border-white/5 relative">
+              <CardContent className="h-[500px] w-full bg-muted rounded-xl p-4 border border-border relative">
                 {chartData.labels.length > 0 ? (
                   <Line data={dataOptions} options={chartOptions as any} />
                 ) : (
-                  <div className="absolute inset-0 flex items-center justify-center text-slate-500">
+                  <div className="absolute inset-0 flex items-center justify-center text-muted-foreground">
                     טוען נתונים...
                   </div>
                 )}
@@ -360,11 +360,12 @@ export default function ECGSimulator() {
           </main>
         </div>
 
-        <footer className="text-center text-slate-500 text-sm mt-12 pb-8 border-t border-white/20 pt-8">
+        <footer className="text-center text-muted-foreground text-sm mt-12 pb-8 border-t border-border pt-8">
           <p>סימולטור ECG לצרכים חינוכיים בלבד</p>
         </footer>
       </div>
     </div>
   );
 }
+
 
