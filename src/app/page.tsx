@@ -280,7 +280,7 @@ export default function ECGSimulator() {
                 <Stethoscope className="w-4 h-4 text-red-500" /> סוג הפרעת קצב
               </Label>
               <Select value={formData.type} onValueChange={(val) => handleChange("type", val || "")}>
-                <SelectTrigger className="bg-background border-border text-foreground focus:ring-red-500 flex-row-reverse justify-between text-right">
+                <SelectTrigger className="bg-background border-border text-foreground focus:ring-red-500 justify-between text-right">
                   <span className="truncate">
                     {formData.type === 'normal' ? 'קצב רגיל (Normal Sinus)' :
                      formData.type === 'afib' ? 'פרפור פרוזדורים (AFib)' :
@@ -377,5 +377,6 @@ export default function ECGSimulator() {
     </div>
   );
 }
+
 
 
