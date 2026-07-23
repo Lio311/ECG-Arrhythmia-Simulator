@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>סימולטור ECG | ECG Arrhythmia Simulator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-heartbeat"></i>
+                <h1>סימולטור הפרעות קצב</h1>
+            </div>
+            <p class="subtitle">סימולציה אינטראקטיבית של הפרעות קצב לב שונות</p>
+        </header>
+
+        <div class="main-grid">
+            <aside class="controls glass-card">
+                <h2><i class="fas fa-sliders-h"></i> בקרות</h2>
+
+                <div class="control-group">
+                    <label><i class="fas fa-stethoscope"></i> סוג הפרעת קצב</label>
+                    <select id="arrhythmiaType">
+                        <option value="normal">קצב רגיל (Normal Sinus)</option>
+                        <option value="afib">פרפור פרוזדורים (AFib)</option>
+                        <option value="aflutter">רפרוף פרוזדורים (AFL)</option>
+                        <option value="svt">SVT</option>
+                        <option value="vt">VT (Ventricular Tachycardia)</option>
+                        <option value="vfib">VF (Ventricular Fibrillation)</option>
+                        <option value="av1">חסימה AV דרגה 1</option>
+                        <option value="av2">חסימה AV דרגה 2</option>
+                        <option value="av3">חסימה AV דרגה 3</option>
+                    </select>
+                </div>
+
+                <div class="control-group">
+                    <label><i class="fas fa-heart"></i> קצב לב (BPM)</label>
+                    <input type="range" id="heartRate" min="40" max="200" value="75">
+                    <span class="value-display" id="hrDisplay">75</span>
+                </div>
+
+                <div class="control-group">
+                    <label><i class="fas fa-clock"></i> משך (שניות)</label>
+                    <input type="range" id="duration" min="5" max="30" value="10">
+                    <span class="value-display" id="durationDisplay">10</span>
+                </div>
+
+                <button class="btn-generate" id="generateBtn">
+                    <i class="fas fa-play"></i>
+                    <span>הצג ECG</span>
+                </button>
+
+                <div class="info-box">
+                    <h3>מידע על ההפרעה</h3>
+                    <p id="arrhythmiaInfo">בחר סוג הפרעת קצב לקבלת מידע</p>
+                </div>
+            </aside>
+
+            <main class="chart-panel glass-card">
+                <h2><i class="fas fa-chart-line"></i> גרף ECG</h2>
+                <div class="chart-container">
+                    <canvas id="ecgChart"></canvas>
+                </div>
+            </main>
+        </div>
+
+        <footer class="footer">
+            <p>סימולטור ECG לצרכים חינוכיים בלבד</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
